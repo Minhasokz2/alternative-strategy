@@ -776,9 +776,11 @@ function aboutPage() {
 
 function notFound() {
   const path = "404.html";
-  const body = `<section class="hero"><div class="container center"><h1>Page not found</h1><p class="muted">The page you were looking for has moved or doesn't exist.</p><div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="${SITE.url}">Go home</a><a class="btn btn-ghost" href="${SITE.url}compare/">Compare tools</a></div></div></section>`;
+  const root = new URL(SITE.url).pathname; // root-relative, so it works on any host serving the site
+
+  const body = `<section class="hero"><div class="container center"><h1>Page not found</h1><p class="muted">The page you were looking for has moved or doesn't exist.</p><div class="hero-actions" style="justify-content:center"><a class="btn btn-primary" href="${root}">Go home</a><a class="btn btn-ghost" href="${root}compare/">Compare tools</a></div></div></section>`;
   // 404 is served from arbitrary paths, so asset links must be absolute.
-  const html = layout({ path: "", title: `Page not found | ${SITE.name}`, description: "Page not found", body, sticky: false }).replaceAll('href="./', `href="${SITE.url}`).replaceAll('src="./', `src="${SITE.url}`);
+  const html = layout({ path: "", title: `Page not found | ${SITE.name}`, description: "Page not found", body, sticky: false }).replaceAll('href="./', `href="${root}`).replaceAll('src="./', `src="${root}`);
   return { path, html };
 }
 

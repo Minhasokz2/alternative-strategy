@@ -1,0 +1,9 @@
+// Cloudflare Workers static-assets deployment: serves the generated site in ./docs
+{
+  "name": "alternative-strategy",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./docs",
+    "not_found_handling": "404-page"
+  }
+}

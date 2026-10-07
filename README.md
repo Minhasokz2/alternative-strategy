@@ -44,6 +44,8 @@ To edit content, change `src/data/*.mjs` and rebuild. For example:
 ## Deploy
 
 **GitHub Pages:** Settings → Pages → Deploy from branch → select this branch and the `/docs` folder.
-Any static host works too (Netlify, Vercel, Cloudflare Pages). Set the publish directory to `docs`.
+**Cloudflare Workers:** connect the repo, set build command `npm run build`, deploy command `npx wrangler deploy` (config is in `wrangler.jsonc`), and add a build variable `SITE_URL` set to your live URL (e.g. `https://alternative-strategy.<you>.workers.dev/`).
+
+Any other static host works too (Netlify, Vercel, Cloudflare Pages). Set the publish directory to `docs`.
 
 > Prices are vendors' publicly listed entry plans. Check them before publishing, because vendors change pricing often.
